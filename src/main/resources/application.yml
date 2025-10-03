@@ -29,10 +29,6 @@ spring:
           uri: lb://TWEETLE-AUTH-SERVICE
           predicates:
             - Path=/api/auths/**
-        - id: SEARCH-SERVICE
-          uri: lb://TWEETLE-SEARCH-SERVICE
-          predicates:
-            - Path=/api/auths/**
       server:
         webflux:
           globalcors:
