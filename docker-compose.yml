@@ -2,14 +2,11 @@ version: '3'
 services:
 
   eureka-server:
-    image: erde1234/tweetle-eureka-server:latest
+    image: tweetle-discovery-service:latest
     container_name: eureka-server
     restart: always
     ports:
       - "8761:8761"
-    environment:
-      SPRING_APPLICATION_NAME: tweetle-eureka-server
-      SERVER_PORT: 8761
     networks:
       - tweetle-network
 
