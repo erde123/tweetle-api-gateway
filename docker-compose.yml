@@ -1,0 +1,39 @@
+version: '3'
+services:
+
+  eureka-server:
+    image: erde1234/tweetle-eureka-server:latest
+    container_name: eureka-server
+    restart: always
+    ports:
+      - "8761:8761"
+    environment:
+      SPRING_APPLICATION_NAME: tweetle-eureka-server
+      SERVER_PORT: 8761
+    networks:
+      - tweetle-network
+
+  api-gateway:
+    build: .
+    container_name: tweetle-api-gateway
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    depends_on:
+      - eureka-server
+    environment:
+      SPRING_APPLICATION_NAME: tweetle-api-gateway
+      SERVER_PORT: 8080
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka
+      EUREKA_INSTANCE_PREFER_IP_ADDRESS: "true"
+
+      SPRING_CLOUD_GATEWAY_CORS_ALLOWED-ORIGINS: "http://localhost:3000"
+      SPRING_CLOUD_GATEWAY_CORS_ALLOWED-METHODS: "GET,POST,PUT,DELETE"
+      SPRING_CLOUD_GATEWAY_CORS_ALLOWED-HEADERS: "Content-Type,Authorization"
+      SPRING_CLOUD_GATEWAY_CORS_MAX-AGE: 3600
+    networks:
+      - tweetle-network
+
+networks:
+  tweetle-network:
+    driver: bridge
