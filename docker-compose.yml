@@ -1,14 +1,11 @@
 version: '3'
 services:
-
   api-gateway:
     build: .
     container_name: tweetle-api-gateway
     restart: on-failure
     ports:
       - "8080:8080"
-    depends_on:
-      - eureka-server
     environment:
       SPRING_APPLICATION_NAME: tweetle-api-gateway
       SERVER_PORT: 8080
@@ -24,4 +21,4 @@ services:
 
 networks:
   tweetle-network:
-    driver: bridge
+    external: true
