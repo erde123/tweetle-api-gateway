@@ -6,4 +6,6 @@ COPY build/libs/tweetle-api-gateway-0.0.1-SNAPSHOT.jar ./
 
 EXPOSE 8080
 
+ENV SPRING_PROFILES_ACTIVE=docker
+
 ENTRYPOINT ["sh", "-c", "java ${JAVA_OPTS} -jar tweetle-api-gateway-0.0.1-SNAPSHOT.jar"]
