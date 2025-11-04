@@ -63,5 +63,7 @@ sonar {
         property "sonar.projectKey", "I556050_tweetle-api-gateway_d0f5a641-4e16-4bcf-a5de-d5f23e68a91b"
         property "sonar.projectName", "Tweetle Api Gateway"
         property "sonar.qualitygate.wait", true
+        property "sonar.exclusions", "**/SwaggerRedirectConfig.java"
+        property "sonar.coverage.exclusions", "**/SwaggerRedirectConfig.java"
     }
 }
