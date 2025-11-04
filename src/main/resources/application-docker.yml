@@ -39,4 +39,8 @@ spring:
         - id: TIMELINE-SERVICE
           uri: lb://TWEETLE-TIMELINE-SERVICE
           predicates:
-            - Path=/api/timelines/**
+            - Path=/api/timeline/**
+        - id: TIMELINE-SERVICE
+          uri: lb://TWEETLE-FOLLOWING-SERVICE
+          predicates:
+            - Path=/api/following/**
