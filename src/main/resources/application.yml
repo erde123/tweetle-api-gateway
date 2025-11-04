@@ -44,3 +44,16 @@ spring:
           uri: lb://TWEETLE-FOLLOWING-SERVICE
           predicates:
             - Path=/api/following/**
+springdoc:
+  swagger-ui:
+    urls:
+      - name: Tweet Service
+        url: /api/tweets/v3/api-docs
+      - name: User Service
+        url: /api/users/v3/api-docs
+      - name: Search Service
+        url: /api/search/v3/api-docs
+      - name: Timeline Service
+        url: /api/timeline/v3/api-docs
+      - name: Following Service
+        url: /api/following/v3/api-docs
