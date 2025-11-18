@@ -13,16 +13,8 @@ eureka:
 spring:
   application:
     name: Tweetle API Gateway
-
   cloud:
     gateway:
-      globalcors:
-        cors-configurations:
-          '[/**]':
-            allowedOrigins: "http://localhost:3000"
-            allowedMethods: GET, POST, PUT, DELETE
-            allowedHeaders: Content-Type, Authorization
-            maxAge: 3600
       routes:
         - id: TWEET-SERVICE
           uri: lb://TWEETLE-TWEET-SERVICE
@@ -44,6 +36,15 @@ spring:
           uri: lb://TWEETLE-FOLLOWING-SERVICE
           predicates:
             - Path=/api/following/**
+      server:
+        webflux:
+          globalcors:
+            cors-configurations:
+              '[/**]':
+                          allowedOrigins: "http://localhost:3000"
+                          allowedMethods: GET, POST, PUT, DELETE
+                          allowedHeaders: Content-Type, Authorization
+                          maxAge: 3600
 springdoc:
   swagger-ui:
     urls:
