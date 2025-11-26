@@ -57,3 +57,12 @@ springdoc:
         url: /api/timeline/v3/api-docs
       - name: Following Service
         url: /api/following/v3/api-docs
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "prometheus"
+  endpoint:
+    prometheus:
+      enabled: true
